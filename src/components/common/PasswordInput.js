@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Input } from "./Input";
 import { ReactComponent as ShowIcon } from "../../assets/eye.svg";
+
+const borderSecondary = ({ hover }) => {
+  return css`
+    border: 1px solid ${hover ? (p) => p.theme.secondaryColor : "#ccc"};
+  `;
+};
 
 const PasswordInputWrapper = styled.div`
   display: flex;
@@ -24,7 +30,7 @@ const PasswordInputStyles = styled(Input).attrs(() => ({
 }))`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border: 1px solid ${(p) => (p.hover ? (p) => p.theme.secondaryColor : "#ccc")};
+  ${borderSecondary}
   border-right: none;
   margin-bottom: 0;
 
@@ -42,7 +48,7 @@ const PasswordInputStyles = styled(Input).attrs(() => ({
 
 const ToggleButton = styled.div`
   height: 40px;
-  border: 1px solid ${(p) => (p.hover ? (p) => p.theme.secondaryColor : "#ccc")};
+  ${borderSecondary}
   box-sizing: border-box;
   font-size: 0.9em;
   display: flex;

@@ -32,6 +32,7 @@ const Menu = styled.nav`
   box-sizing: border-box;
   border: 3px solid ${(p) => p.theme.secondaryColor};
   border-top: none;
+  background: ${(p) => p.theme.bodyBackgroundColor};
 
   @media (min-width: 768px) {
     display: flex;
