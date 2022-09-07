@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 
@@ -11,18 +11,33 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   background: #eeeeee;
+  background-image: linear-gradient(to right, #f8049c, #fdd54f);
+  border-bottom: 3px solid #fdd54f;
 `;
 
 const Menu = styled.nav`
-  display: flex;
-  position: relative;
-  width: initial;
-  border-bottom: none;
-  margin: auto 0 auto auto;
+  display: ${(p) => (p.open ? "block" : "none")};
   font-family: initial;
-  background: none;
-  left: initial;
-  top: initial;
+  position: absolute;
+  width: fit-content;
+  min-width: 150px;
+  top: 60px;
+  right: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 3px solid #fdd54f;
+  border-top: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    background: none;
+    left: initial;
+    top: initial;
+    position: relative;
+    width: initial;
+    border: none;
+    margin: auto 0 auto auto;
+  }
 `;
 
 const Link = ({ isActive, children, ...props }) => {
@@ -37,13 +52,39 @@ const StyledLink = styled(Link)`
   margin: auto 0;
   text-decoration: none;
   font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
+  color: black;
+`;
+
+const MobileMenuIcon = styled.div`
+  margin: auto 0 auto auto;
+  width: 25px;
+  min-width: 25px;
+  padding: 5px;
+  cursor: pointer;
+
+  > div {
+    height: 3px;
+    background: black;
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Header = () => {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <HeaderWrapper>
-      <Menu>
+      <MobileMenuIcon onClick={() => setMenuOpen(!menuOpen)}>
+        <div />
+        <div />
+        <div />
+      </MobileMenuIcon>
+      <Menu open={menuOpen}>
         <StyledLink to="/" isActive={pathname === "/"}>
           Home
         </StyledLink>
