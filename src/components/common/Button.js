@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 
 const Button = styled.button`
+  cursor: pointer;
   color: white;
-  background: ${(p) => (p.secondary ? "black" : "#f8049c")};
+  background: ${(p) => (p.secondary ? "#fdd54f" : "#f8049c")};
   font-weight: bold;
   ${(p) =>
     p.large
