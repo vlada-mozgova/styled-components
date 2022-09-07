@@ -63,10 +63,6 @@ const ToggleButton = styled.div`
   color: black;
 `;
 
-const ShowIconStyled = styled(ShowIcon)`
-  fill: ${(p) => (p.show ? "black" : "#ccc")};
-`;
-
 const PasswordInput = (props) => {
   const [show, setShow] = useState(true);
   const [hoverWrapper, setHoverWrapper] = useState(false);
@@ -79,7 +75,7 @@ const PasswordInput = (props) => {
       >
         <PasswordInputStyles {...props} hover={hoverWrapper} />
         <ToggleButton onClick={() => setShow(!show)} hover={hoverWrapper}>
-          <ShowIconStyled show={show} />
+          <ShowIcon fill={`${show ? "black" : "#ccc"}`} />
         </ToggleButton>
       </PasswordInputWrapper>
       <div>{show ? props.value : ""}</div>
