@@ -13,13 +13,13 @@ const Input = styled.input`
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid #fdd54f;
-    box-shadow: 0 0 5px 2px #fdd54f;
+    border: 1px solid ${(p) => p.theme.secondaryColor};
+    box-shadow: 0 0 5px 2px ${(p) => p.theme.secondaryColor};
   }
 
   &:focus {
-    border: 1px solid #fdd54f;
-    box-shadow: 0 0 5px 2px #fdd54f;
+    border: 1px solid ${(p) => p.theme.secondaryColor};
+    box-shadow: 0 0 5px 2px ${(p) => p.theme.secondaryColor};
   }
 `;
 

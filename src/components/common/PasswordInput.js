@@ -5,11 +5,12 @@ import { ReactComponent as ShowIcon } from "../../assets/eye.svg";
 
 const PasswordInputWrapper = styled.div`
   display: flex;
-  box-shadow: ${(p) => (p.hover ? "0 0 5px 2px #fdd54f" : "none")};
+  box-shadow: 0 0 5px 2px
+    ${(p) => (p.hover ? (p) => p.theme.secondaryColor : "none")};
   border-radius: 5px;
 
   &:hover {
-    box-shadow: 0 0 5px 2px #fdd54f;
+    box-shadow: 0 0 5px 2px ${(p) => p.theme.secondaryColor};
   }
 
   ~ div {
@@ -23,7 +24,7 @@ const PasswordInputStyles = styled(Input).attrs(() => ({
 }))`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border: ${(p) => (p.hover ? "1px solid #fdd54f" : "1px solid #ccc")};
+  border: 1px solid ${(p) => (p.hover ? (p) => p.theme.secondaryColor : "#ccc")};
   border-right: none;
   margin-bottom: 0;
 
@@ -33,7 +34,7 @@ const PasswordInputStyles = styled(Input).attrs(() => ({
   }
 
   &:focus {
-    border: 1px solid #fdd54f;
+    border: 1px solid ${(p) => p.theme.secondaryColor};
     border-right: none;
     box-shadow: none;
   }
@@ -41,7 +42,7 @@ const PasswordInputStyles = styled(Input).attrs(() => ({
 
 const ToggleButton = styled.div`
   height: 40px;
-  border: ${(p) => (p.hover ? "1px solid #fdd54f" : "1px solid #ccc")};
+  border: 1px solid ${(p) => (p.hover ? (p) => p.theme.secondaryColor : "#ccc")};
   box-sizing: border-box;
   font-size: 0.9em;
   display: flex;
